@@ -37,13 +37,15 @@ const Sidebar = () => {
               />
             </a>
           )}
-          <button onClick={toggleSidebarWidth} className="p-2">
+          <button onClick={toggleSidebarWidth} className="p-2 ">
             {!hideText ? <ArrowLeftFromLine /> : <ArrowRightToLine />}
           </button>
         </div>
         <div className="h-[28%] flex flex-col space-y-3">
           <a
-            className="w-full h-10 border rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2" 
+            className={`w-full h-10 border rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
+                hideText ? 'justify-center' : 'justify-start'
+              }`}
           >
             <Folderssvg />
             {!hideText && <span>Folders</span>}
