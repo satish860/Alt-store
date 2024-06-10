@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   CaretSortIcon,
   ChevronDownIcon,
   DotsHorizontalIcon,
-} from "@radix-ui/react-icons"
+} from "@radix-ui/react-icons";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -17,10 +17,10 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -29,8 +29,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -38,47 +38,60 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 const data: Payment[] = [
   {
     id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
+    amount: 20,
+    status: "Ajay Pratap Singh v Saroj Kumari Dated 05 Ahgust 2021 C",
+    email: "129.2 mb",
+    date: "8 June 2023", // New field
   },
   {
     id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
+    amount: 24,
+    status: "Solitaire",
+    email: "119.2 mb",
+    date: "1 June 2023", // New field
   },
   {
     id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    amount: 37,
+    status: "Roshan Lal v Naresh Chand and others CRP No. 75 of 2019",
+    email: "10.2 mb",
+    date: "4 may 2023", // New field
   },
   {
     id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
+    amount: 40,
+    status: "Ajit K. Bhattacharjya v. Brigade Towers Owners Association & 2 Ors., FA No. 95 of 2022",
+    email: "30.2 mb",
+    date: "19 may 2023", // New field
+  },
+  {
+    id: "bhqecj4p",
+    amount: 21,
+    status: "Vijaylakshmi_Marketing",
+    email: "30.2 mb",
+    date: "19 june 2023", // New field
   },
   {
     id: "bhqecj4p",
     amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-]
+    status: "Solitaire",
+    email: "12.2 mb",
+    date: "19 july 2023", // New field
+  }
+];
 
 export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
+  id: string;
+  amount: number;
+  status: string;
+  email: string;
+  date: string; // New field
+};
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -105,7 +118,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Folder name",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
@@ -116,35 +129,45 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <Button
           variant="ghost"
+          className="flex justify-center items-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Total size
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => (
+      <div className="flex justify-center items-center lowercase">
+        {row.getValue("email") as string}
+      </div>
+    ),
   },
   {
     accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    header: () => (
+      <div className="flex justify-center items-center">Shared with</div>
+    ),
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
-
-      return <div className="text-right font-medium">{formatted}</div>
+      const amount = row.getValue("amount") as number;
+      return (
+        <div className="flex justify-center items-center font-medium">
+          {amount} MB
+        </div>
+      );
     },
   },
   {
+    accessorKey: "date",
+    header: "Last update",
+    cell: ({ row }) => <div>{row.getValue("date")}</div>,
+  },
+  {
     id: "actions",
+    header: "Actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -166,19 +189,19 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];
 
 export function DataTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data,
@@ -197,7 +220,7 @@ export function DataTable() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
@@ -232,7 +255,7 @@ export function DataTable() {
                   >
                     {column.id}
                   </DropdownMenuCheckboxItem>
-                )
+                );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -252,7 +275,7 @@ export function DataTable() {
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -312,5 +335,5 @@ export function DataTable() {
         </div>
       </div>
     </div>
-  )
+  );
 }
