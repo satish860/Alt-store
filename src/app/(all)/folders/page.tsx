@@ -8,7 +8,7 @@ const Folders = () => {
       <div className="flex justify-between items-center">
         <span className="text-lg font-bold">Folders</span>
         <div className="flex items-center gap-2">
-          <div className="w-48 h-10 border rounded-lg flex items-center p-1">
+          <div className="w-[300px] h-10 border rounded-lg flex items-center p-1">
             <Search />
             <Input />
           </div>
