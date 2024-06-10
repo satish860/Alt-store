@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <div
       className={`min-h-screen flex flex-col bg-white justify-center items-center transition-all duration-300 ${
-        isExpanded ? "w-[15%]" : "w-[5%]"
+        isExpanded ? "w-[15%] bg-white" : "w-[5%] bg-gray-100"
       }`}
     >
       <div className=" flex flex-col space-y-4 h-full w-full border-r">
