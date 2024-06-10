@@ -16,13 +16,13 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col bg-white justify-center items-center transition-all duration-300 ${
+      className={`min-h-screen flex flex-col justify-center items-center transition-all duration-300 ${
         isExpanded
-          ? "md:w-[15%] w-[30%]  bg-white "
+          ? "md:w-[15%] w-[30%] bg-white"
           : "w-[15%] md:w-[5%] bg-gray-200"
       }`}
     >
-      <div className=" flex flex-col space-y-4 h-full w-full border-r">
+      <div className=" flex flex-col space-y-4 h-full w-full border-r ">
         <div
           className={`w-full h-[10%] flex ${
             hideText ? "justify-center" : "justify-between"
