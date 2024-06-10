@@ -1,5 +1,5 @@
 const Folders = () => {
-  return <div>
+  return <div className="max-w-6xl">
     Folders
   </div>;
 };

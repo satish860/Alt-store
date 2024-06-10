@@ -17,11 +17,17 @@ const Sidebar = () => {
   return (
     <div
       className={`min-h-screen flex flex-col bg-white justify-center items-center transition-all duration-300 ${
-        isExpanded ? "w-[15%] bg-white" : "w-[5%] bg-gray-100"
+        isExpanded
+          ? "md:w-[15%] w-[30%]  bg-white "
+          : "w-[15%] md:w-[5%] bg-gray-200"
       }`}
     >
       <div className=" flex flex-col space-y-4 h-full w-full border-r">
-        <div className="w-full h-[10%] flex justify-between items-center px-2 py-1 border-b border-gray-300">
+        <div
+          className={`w-full h-[10%] flex ${
+            hideText ? "justify-center" : "justify-between"
+          } items-center px-2 py-1 border-b border-gray-300`}
+        >
           {!hideText && (
             <a
               href="https://www.askjunior.ai/"
@@ -44,14 +50,13 @@ const Sidebar = () => {
         <div className="h-[28%] flex flex-col px-2 py-1">
           <a
             className={`w-full h-10 rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
-                hideText ? 'justify-center' : 'justify-start'
-              }`}
+              hideText ? "justify-center" : "justify-start"
+            }`}
           >
             <Folderssvg />
             {!hideText && <span>Folders</span>}
           </a>
         </div>
-        
       </div>
     </div>
   );
