@@ -16,11 +16,11 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col p-1 bg-white justify-center items-center transition-all duration-300 ${
+      className={`min-h-screen flex flex-col bg-white justify-center items-center transition-all duration-300 ${
         isExpanded ? "w-[15%]" : "w-[5%]"
       }`}
     >
-      <div className=" flex flex-col space-y-8 h-[99%] bg-gray-200 w-full rounded-xl shadow-xl">
+      <div className=" flex flex-col space-y-4 h-full w-full border-r">
         <div className="w-full h-[10%] flex justify-between items-center px-2 py-1 border-b border-gray-300">
           {!hideText && (
             <a
@@ -41,9 +41,9 @@ const Sidebar = () => {
             {!hideText ? <ArrowLeftFromLine /> : <ArrowRightToLine />}
           </button>
         </div>
-        <div className="h-[28%] flex flex-col space-y-3">
+        <div className="h-[28%] flex flex-col px-2 py-1">
           <a
-            className={`w-full h-10 border rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
+            className={`w-full h-10 rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
                 hideText ? 'justify-center' : 'justify-start'
               }`}
           >
