@@ -54,7 +54,7 @@ const Sidebar = () => {
             }`}
           >
             <Folderssvg />
-            {!hideText && <span>Folders</span>}
+            {!hideText && <span className="font-500">Folders</span>}
           </a>
         </div>
       </div>

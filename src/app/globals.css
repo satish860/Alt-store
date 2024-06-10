@@ -74,3 +74,7 @@
       @apply bg-background text-foreground;
     }
   }
+  
+  .font-500 {
+    font-weight: 500;
+  }
