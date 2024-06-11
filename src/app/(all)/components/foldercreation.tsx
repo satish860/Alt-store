@@ -20,6 +20,7 @@ export default function Foldercreation() {
   const [folderName, setFolderName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleCreateClick = async () => {
     setLoading(true);
@@ -32,7 +33,7 @@ export default function Foldercreation() {
         Foldername: folderName,
       });
       console.log("Response:", response.data);
-      // Handle success (e.g., close dialog, clear input, show success message)
+      setOpen(false);
     } catch (err) {
       console.error("Error creating folder:", err);
       setError(error);
@@ -42,7 +43,7 @@ export default function Foldercreation() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
@@ -73,10 +74,10 @@ export default function Foldercreation() {
             className="bg-[#17A34A] text-white hover:bg-[#17A34A] hover:text-white"
             onClick={handleCreateClick}
           >
-            Create
+            {loading ? "Creating..." : "Create"}
           </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  );
 }
