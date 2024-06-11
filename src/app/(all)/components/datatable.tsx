@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import * as React from "react";
 import {
   CaretSortIcon,
@@ -36,130 +36,84 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    amount: 20,
-    status: "Ajay Pratap Singh v Saroj Kumari Dated 05 Ahgust 2021 C",
-    email: "129.2 mb",
-    date: "8 June 2023", 
-  },
-  {
-    id: "3u1reuv4",
-    amount: 24,
-    status: "Solitaire",
-    email: "119.2 mb",
-    date: "1 June 2023", 
-  },
-  {
-    id: "derv1ws0",
-    amount: 37,
-    status: "Roshan Lal v Naresh Chand and others CRP No. 75 of 2019",
-    email: "10.2 mb",
-    date: "4 may 2023", 
-  },
-  {
-    id: "5kma53ae",
-    amount: 40,
-    status:
-      "Ajit K. Bhattacharjya v. Brigade Towers Owners Association & 2 Ors., FA No. 95 of 2022",
-    email: "30.2 mb",
-    date: "19 may 2023", 
-  },
-  {
-    id: "bhqecj4p",
-    amount: 21,
-    status: "Vijaylakshmi_Marketing",
-    email: "30.2 mb",
-    date: "19 june 2023", 
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "Solitaire",
-    email: "12.2 mb",
-    date: "19 july 2023", 
-  },
-];
+interface FolderRecord {
+  Userid?: string; // Userid can be undefined
+  Foldername: string; // Foldername must be a string
+}
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: string;
-  email: string;
-  date: string; 
-};
+interface DataTableProps {
+  records: FolderRecord[];
+}
 
-export const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: "status",
-    header: "Folder name",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
-  },
-  {
-    accessorKey: "email",
-    header: "Total size",
-    cell: ({ row }) => (
-      <div className="flex justify-center items-center lowercase">
-        {row.getValue("email") as string}
-      </div>
-    ),
-  },
-  {
-    accessorKey: "amount",
-    header: () => (
-      <div className="flex justify-center items-center">Shared with</div>
-    ),
-    cell: ({ row }) => {
-      const amount = row.getValue("amount") as number;
-      return (
-        <div className="flex justify-center items-center font-medium">
-          {amount} MB
+export const DataTable: React.FC<DataTableProps> = ({ records }) => {
+  const columns: ColumnDef<FolderRecord>[] = [
+    {
+      accessorKey: "Foldername",
+      header: "Folder name",
+      cell: ({ row }) => (
+        <div className="capitalize">{row.getValue("Foldername")}</div>
+      ),
+    },
+    {
+      accessorKey: "Total size",
+      header: "Total size",
+      cell: ({ row }) => (
+        <div className="flex justify-center items-center lowercase">
+          {row.getValue("Total size") as string}
         </div>
-      );
+      ),
     },
-  },
-  {
-    accessorKey: "date",
-    header: "Last update",
-    cell: ({ row }) => <div>{row.getValue("date")}</div>,
-  },
-  {
-    id: "actions",
-    header: "Actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-            >
-              View
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Rename</DropdownMenuItem>
-            <DropdownMenuItem>Share</DropdownMenuItem>
-            <DropdownMenuItem>Copy link</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+    {
+      accessorKey: "Shared with",
+      header: () => (
+        <div className="flex justify-center items-center">Shared with</div>
+      ),
+      cell: ({ row }) => {
+        const amount = row.getValue("Shared with") as number;
+        return (
+          <div className="flex justify-center items-center font-medium">
+            {amount} 
+          </div>
+        );
+      },
     },
-  },
-];
+    {
+      accessorKey: "Last update",
+      header: "Last update",
+      cell: ({ row }) => <div>{row.getValue("Last update")}</div>,
+    },
+    {
+      id: "actions",
+      header: "Actions",
+      enableHiding: false,
+      cell: ({ row }) => {
+        const payment = row.original;
 
-export function DataTable() {
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <DotsHorizontalIcon className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem>View</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Rename</DropdownMenuItem>
+              <DropdownMenuItem>Share</DropdownMenuItem>
+              <DropdownMenuItem>Copy link</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-500">
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
+      },
+    },
+  ];
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -169,7 +123,7 @@ export function DataTable() {
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
-    data,
+    data: records,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -293,4 +247,4 @@ export function DataTable() {
       </div>
     </div>
   );
-}
+};

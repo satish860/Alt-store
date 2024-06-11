@@ -2,8 +2,34 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Foldercreation from "../components/foldercreation";
 import { DataTable } from "../components/datatable";
+import { getXataClient } from "../../../xata";
+import { auth } from "@clerk/nextjs/server";
 
-const Folders = () => {
+interface FolderRecord {
+  Userid?: string; // Userid can be undefined
+  Foldername: string; // Foldername must be a string
+}
+
+const xata = getXataClient();
+
+const Folders = async () => {
+  const { userId }: { userId: string | null } = auth();
+  const records = await xata.db.Altstore.select(["Userid", "Foldername"])
+    .filter("Userid", userId)
+    .getAll();
+  console.log(records);
+
+  const filteredRecords: FolderRecord[] = records
+    .filter(
+      (record) => record.Foldername !== null && record.Foldername !== undefined
+    )
+    .map((record) => ({
+      Userid: record.Userid || undefined, 
+      Foldername: record.Foldername as string, 
+    }));
+
+  console.log(filteredRecords);
+
   return (
     <div className="container max-w-7xl py-6 lg:py-6 flex flex-col">
       <div className="flex justify-between items-center">
@@ -16,7 +42,7 @@ const Folders = () => {
           <Foldercreation />
         </div>
       </div>
-      <DataTable />
+      <DataTable records={filteredRecords} />
     </div>
   );
 };
