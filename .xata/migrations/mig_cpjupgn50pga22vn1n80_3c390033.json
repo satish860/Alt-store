@@ -1,0 +1,11 @@
+{
+  "id": "mig_cpjupgn50pga22vn1n80",
+  "checksum": "1:3c390033b18f37878d49f6d0d1218ac82be96ede58503a49c1ade474c1ee1d91",
+  "operations": [
+    {
+      "addTable": {
+        "table": "Alt-store"
+      }
+    }
+  ]
+}

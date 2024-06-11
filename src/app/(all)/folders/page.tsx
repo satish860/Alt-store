@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import FolderPopup from "../components/folderpopup";
+import Foldercreation from "../components/foldercreation";
 import { DataTable } from "../components/datatable";
 
 const Folders = () => {
@@ -13,7 +13,7 @@ const Folders = () => {
             <Search />
             <Input />
           </div>
-          <FolderPopup />
+          <Foldercreation />
         </div>
       </div>
       <DataTable />
