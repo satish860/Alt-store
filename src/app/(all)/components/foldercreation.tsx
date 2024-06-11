@@ -53,15 +53,17 @@ export default function Foldercreation() {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="font-bold">Create folder</DialogTitle>
+        <DialogHeader className="space-y-6">
+          <DialogTitle className="font-bold ">Create folder</DialogTitle>
           <Separator />
-          <span className="font-500">Folder Name</span>
-          <div className="border h-10 w-full flex justify-center items-center rounded-md">
-            <Input
-              value={folderName}
-              onChange={(e) => setFolderName(e.target.value)}
-            />
+          <div>
+            <span className="font-500">Folder Name</span>
+            <div className="border h-10 w-full flex justify-center items-center rounded-md">
+              <Input
+                value={folderName}
+                onChange={(e) => setFolderName(e.target.value)}
+              />
+            </div>
           </div>
         </DialogHeader>
         <DialogFooter className="flex justify-center items-center">

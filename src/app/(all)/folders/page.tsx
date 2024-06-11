@@ -6,8 +6,8 @@ import { getXataClient } from "../../../xata";
 import { auth } from "@clerk/nextjs/server";
 
 interface FolderRecord {
-  Userid?: string; // Userid can be undefined
-  Foldername: string; // Foldername must be a string
+  Userid?: string; 
+  Foldername: string; 
 }
 
 const xata = getXataClient();
@@ -31,7 +31,7 @@ const Folders = async () => {
   console.log(filteredRecords);
 
   return (
-    <div className="container max-w-7xl py-6 lg:py-6 flex flex-col">
+    <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
       <div className="flex justify-between items-center">
         <span className="text-lg font-bold">Folders</span>
         <div className="flex items-center gap-2">
