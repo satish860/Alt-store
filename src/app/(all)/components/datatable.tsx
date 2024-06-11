@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import {
   CaretSortIcon,
@@ -37,8 +37,8 @@ import {
 } from "@/components/ui/table";
 
 interface FolderRecord {
-  Userid?: string; // Userid can be undefined
-  Foldername: string; // Foldername must be a string
+  Userid?: string;
+  Foldername: string;
 }
 
 interface DataTableProps {
@@ -51,7 +51,9 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
       accessorKey: "Foldername",
       header: "Folder name",
       cell: ({ row }) => (
-        <div className="capitalize">{row.getValue("Foldername")}</div>
+        <div className="capitalize">
+          <a href="/files">{row.getValue("Foldername")}</a>
+        </div>
       ),
     },
     {
@@ -72,7 +74,7 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
         const amount = row.getValue("Shared with") as number;
         return (
           <div className="flex justify-center items-center font-medium">
-            {amount} 
+            {amount}
           </div>
         );
       },
@@ -99,7 +101,9 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>View</DropdownMenuItem>
+              <DropdownMenuItem>
+                <a href="/files">View</a>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Rename</DropdownMenuItem>
               <DropdownMenuItem>Share</DropdownMenuItem>
