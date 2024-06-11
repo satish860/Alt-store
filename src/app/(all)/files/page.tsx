@@ -1,10 +1,11 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Fileupload from "../components/fileupload";
+import Filesview from "../components/filesview";
 
 const Fileview = () => {
   return (
-    <div className="container max-w-7xl py-6 lg:py-6 flex flex-col">
+    <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
       <div className="flex justify-between items-center">
         <span className="text-lg font-bold">Files</span>
         <div className="flex items-center gap-2">
@@ -15,6 +16,7 @@ const Fileview = () => {
           <Fileupload />
         </div>
       </div>
+      <Filesview/>
     </div>
   );
 };
