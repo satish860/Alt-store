@@ -35,8 +35,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useRouter } from "next/navigation";
 
 interface FolderRecord {
+  id: string;
   Userid?: string;
   Foldername: string;
 }
@@ -46,13 +48,21 @@ interface DataTableProps {
 }
 
 export const DataTable: React.FC<DataTableProps> = ({ records }) => {
+  const router = useRouter();
+
+  const refreshPage = () => {
+    router.refresh();
+  };
+
+  refreshPage();
+
   const columns: ColumnDef<FolderRecord>[] = [
     {
       accessorKey: "Foldername",
       header: "Folder name",
       cell: ({ row }) => (
         <div className="capitalize">
-          <a href="/files">{row.getValue("Foldername")}</a>
+          <a href={`/files/${row.original.id}`}>{row.getValue("Foldername")}</a>
         </div>
       ),
     },
@@ -101,9 +111,11 @@ export const DataTable: React.FC<DataTableProps> = ({ records }) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>
-                <a href="/files">View</a>
-              </DropdownMenuItem>
+              {records.map((record) => (
+                <DropdownMenuItem key={record.Foldername}>
+                  <a href={`/files/${record.Userid}`}>View</a>
+                </DropdownMenuItem>
+              ))}
               <DropdownMenuSeparator />
               <DropdownMenuItem>Rename</DropdownMenuItem>
               <DropdownMenuItem>Share</DropdownMenuItem>

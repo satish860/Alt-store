@@ -5,27 +5,30 @@ import { DataTable } from "../components/datatable";
 import { getXataClient } from "../../../xata";
 import { auth } from "@clerk/nextjs/server";
 
+
 interface FolderRecord {
-  Userid?: string; 
-  Foldername: string; 
+  id: string;
+  Userid?: string;
+  Foldername: string;
 }
 
 const xata = getXataClient();
 
 const Folders = async () => {
   const { userId }: { userId: string | null } = auth();
-  const records = await xata.db.Altstore.select(["Userid", "Foldername"])
+  
+  const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
     .filter("Userid", userId)
     .getAll();
-  console.log(records);
 
   const filteredRecords: FolderRecord[] = records
     .filter(
       (record) => record.Foldername !== null && record.Foldername !== undefined
     )
     .map((record) => ({
-      Userid: record.Userid || undefined, 
-      Foldername: record.Foldername as string, 
+      id: record.id,
+      Userid: record.Userid || undefined,
+      Foldername: record.Foldername as string,
     }));
 
   console.log(filteredRecords);

@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import Fileupload from "../components/fileupload";
-import Filesview from "../components/filesview";
+import Fileupload from "../../components/fileupload";
+import Filesview from "../../components/filesview";
 
 const Fileview = () => {
   return (
