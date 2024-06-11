@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   CaretSortIcon,
@@ -18,9 +17,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -30,7 +27,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -46,43 +42,44 @@ const data: Payment[] = [
     amount: 20,
     status: "Ajay Pratap Singh v Saroj Kumari Dated 05 Ahgust 2021 C",
     email: "129.2 mb",
-    date: "8 June 2023", // New field
+    date: "8 June 2023", 
   },
   {
     id: "3u1reuv4",
     amount: 24,
     status: "Solitaire",
     email: "119.2 mb",
-    date: "1 June 2023", // New field
+    date: "1 June 2023", 
   },
   {
     id: "derv1ws0",
     amount: 37,
     status: "Roshan Lal v Naresh Chand and others CRP No. 75 of 2019",
     email: "10.2 mb",
-    date: "4 may 2023", // New field
+    date: "4 may 2023", 
   },
   {
     id: "5kma53ae",
     amount: 40,
-    status: "Ajit K. Bhattacharjya v. Brigade Towers Owners Association & 2 Ors., FA No. 95 of 2022",
+    status:
+      "Ajit K. Bhattacharjya v. Brigade Towers Owners Association & 2 Ors., FA No. 95 of 2022",
     email: "30.2 mb",
-    date: "19 may 2023", // New field
+    date: "19 may 2023", 
   },
   {
     id: "bhqecj4p",
     amount: 21,
     status: "Vijaylakshmi_Marketing",
     email: "30.2 mb",
-    date: "19 june 2023", // New field
+    date: "19 june 2023", 
   },
   {
     id: "bhqecj4p",
     amount: 721,
     status: "Solitaire",
     email: "12.2 mb",
-    date: "19 july 2023", // New field
-  }
+    date: "19 july 2023", 
+  },
 ];
 
 export type Payment = {
@@ -90,32 +87,10 @@ export type Payment = {
   amount: number;
   status: string;
   email: string;
-  date: string; // New field
+  date: string; 
 };
 
 export const columns: ColumnDef<Payment>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
   {
     accessorKey: "status",
     header: "Folder name",
@@ -125,18 +100,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          className="flex justify-center items-center"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Total size
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: "Total size",
     cell: ({ row }) => (
       <div className="flex justify-center items-center lowercase">
         {row.getValue("email") as string}
@@ -180,13 +144,14 @@ export const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              View
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>Rename</DropdownMenuItem>
+            <DropdownMenuItem>Share</DropdownMenuItem>
+            <DropdownMenuItem>Copy link</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-500">Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -225,14 +190,6 @@ export function DataTable() {
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
