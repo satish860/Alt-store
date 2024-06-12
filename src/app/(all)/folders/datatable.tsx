@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 import {
   Table,
   TableBody,
@@ -13,11 +13,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
@@ -28,19 +28,19 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-  })
-  console.log("dataaaa",data)
+  });
+  console.log("dataaaa", data);
 
-    const getColumnClass = (accessorKey: string | undefined) => {
+  const getColumnClass = (accessorKey: string | undefined) => {
     switch (accessorKey) {
-      case 'Foldername':
-        return 'w-[222px]';
-      case 'Total size':
-        return 'w-[100px]';
-      case 'actions':
-        return 'w-[100px]';
+      case "Foldername":
+        return "w-[222px]";
+      case "Total size":
+        return "w-[100px]";
+      case "actions":
+        return "w-[100px]";
       default:
-        return '';
+        return "";
     }
   };
 
@@ -50,9 +50,12 @@ export function DataTable<TData, TValue>({
         <TableHeader className="bg-[#F6F8FA]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
+              {headerGroup.headers.map((header,index) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead
+                    key={header.id}
+                    style={{ width: index === 0 ? "222px" : "100px" }}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -60,7 +63,7 @@ export function DataTable<TData, TValue>({
                           header.getContext()
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
@@ -71,10 +74,12 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                
               >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                {row.getVisibleCells().map((cell,index) => (
+                  <TableCell
+                    key={cell.id}
+                    style={{ width: index === 0 ? "560px" : "100px" }}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -90,5 +95,5 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }
