@@ -2,14 +2,13 @@
  
 import { ColumnDef } from "@tanstack/react-table"
  
-
 export type Folder = {
-  Folderid: string
-  Foldername: string
-  Foldersize: number
+  id: string
+  Name: string
+  Size: number
 }
  
-export const Columndata: ColumnDef<Folder>[] = [
+export const Column: ColumnDef<Folder>[] = [
   {
     accessorKey: "Foldername",
     header: "Foldername",
