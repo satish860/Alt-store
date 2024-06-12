@@ -3,32 +3,39 @@ import { Input } from "@/components/ui/input";
 import Foldercreation from "../components/foldercreation";
 import { getXataClient } from "../../../xata";
 import { auth } from "@clerk/nextjs/server";
+import { Folder, Column } from "./columns";
+import { DataTable } from "../folders/datatable";
 
-interface FolderRecord {
+interface UserFolder {
   id: string;
-  Userid?: string;
-  Foldername: string;
+  name: string;
+  size: number;
 }
 
 const xata = getXataClient();
 
-const Folders = async () => {
+async function getData(): Promise<UserFolder[]> {
   const { userId }: { userId: string | null } = auth();
 
   const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
     .filter("Userid", userId)
     .getAll();
 
-  const filteredRecords: FolderRecord[] = records
+  const filteredRecords: UserFolder[] = records
     .filter(
       (record) => record.Foldername !== null && record.Foldername !== undefined
     )
     .map((record) => ({
       id: record.id,
-      Userid: record.Userid || undefined,
-      Foldername: record.Foldername as string,
+      name: record.Foldername as string,
+      size: 0,
     }));
 
+  return filteredRecords;
+}
+
+const Folders = async () => {
+  const data = await getData();
   return (
     <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
       <div className="flex justify-between items-center">
@@ -41,7 +48,7 @@ const Folders = async () => {
           <Foldercreation />
         </div>
       </div>
-      
+      <DataTable columns={Column} data={data} />
     </div>
   );
 };

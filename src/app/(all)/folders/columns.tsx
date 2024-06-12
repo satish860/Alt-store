@@ -10,11 +10,11 @@ export type Folder = {
  
 export const Column: ColumnDef<Folder>[] = [
   {
-    accessorKey: "Name",
-    header: "Foldername",
+    accessorKey: "name",
+    header: "Name",
   },
   {
-    accessorKey: "Size",
-    header: "Foldersize",
+    accessorKey: "size",
+    header: "Total size",
   },
 ]

@@ -29,6 +29,7 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+  console.log("dataaaa",data)
 
   return (
     <div className="rounded-md border">
@@ -57,6 +58,7 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
