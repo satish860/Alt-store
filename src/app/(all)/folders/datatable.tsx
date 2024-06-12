@@ -31,10 +31,23 @@ export function DataTable<TData, TValue>({
   })
   console.log("dataaaa",data)
 
+    const getColumnClass = (accessorKey: string | undefined) => {
+    switch (accessorKey) {
+      case 'Foldername':
+        return 'w-[222px]';
+      case 'Total size':
+        return 'w-[100px]';
+      case 'actions':
+        return 'w-[100px]';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHeader>
+    <div className="rounded-md">
+      <Table className="border-collapse">
+        <TableHeader className="bg-[#F6F8FA]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
