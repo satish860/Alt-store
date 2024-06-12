@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import Link from "next/link";
 
 export type Folder = {
   id: string;
@@ -41,11 +42,11 @@ export const Column: ColumnDef<Folder>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              View
+              <Link href={`/files/${payment.id}`}>
+              View 
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
             <DropdownMenuItem>Rename</DropdownMenuItem>
             <DropdownMenuItem>Share</DropdownMenuItem>
             <DropdownMenuItem>Copy link</DropdownMenuItem>
