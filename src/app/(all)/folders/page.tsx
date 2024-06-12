@@ -28,6 +28,8 @@ async function getData(): Promise<UserFolder[]> {
     .map((record) => ({
       id: record.id,
       name: record.Foldername as string,
+      shared:0,
+      updated:0,
       size: 0,
     }));
 

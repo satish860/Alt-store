@@ -28,6 +28,14 @@ export const Column: ColumnDef<Folder>[] = [
     header: "Total size",
   },
   {
+    accessorKey: "shared",
+    header: "Shared with",
+  },
+  {
+    accessorKey: "updated",
+    header: "Last Update",
+  },
+  {
     id: "actions",
     header:"Action",
     cell: ({ row }) => {
@@ -56,4 +64,6 @@ export const Column: ColumnDef<Folder>[] = [
       );
     },
   },
+
+
 ];
