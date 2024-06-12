@@ -32,7 +32,6 @@ export default function Foldercreation() {
         User_id: userId,
         Foldername: folderName,
       });
-      console.log("Response:", response.data);
       setOpen(false);
     } catch (err) {
       console.error("Error creating folder:", err);
@@ -53,19 +52,24 @@ export default function Foldercreation() {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader className="space-y-6">
+        <DialogHeader className="">
           <DialogTitle className="font-bold ">Create folder</DialogTitle>
-          <Separator />
-          <div>
-            <span className="font-500">Folder Name</span>
-            <div className="border h-10 w-full flex justify-center items-center rounded-md">
-              <Input
-                value={folderName}
-                onChange={(e) => setFolderName(e.target.value)}
-              />
+
+          <div className="">
+            <Separator />
+            <div className="h-32 flex flex-col justify-center ">
+              <span className="font-500">Folder Name</span>
+              <div className="border h-10 w-full flex justify-center items-center rounded-md">
+                <Input
+                  value={folderName}
+                  onChange={(e) => setFolderName(e.target.value)}
+                />
+              </div>
             </div>
+            <Separator />
           </div>
         </DialogHeader>
+
         <DialogFooter className="flex justify-center items-center">
           <DialogClose asChild>
             <Button type="button" variant="secondary">

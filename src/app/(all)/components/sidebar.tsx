@@ -3,7 +3,8 @@ import Image from "next/image";
 import { ArrowLeftFromLine } from "lucide-react";
 import { SearchX, Zap, ArrowRightToLine } from "lucide-react";
 import { useState } from "react";
-import { Folderssvg } from "../../../../public/icons/icons";
+import { Homesvg, Settingsvg } from "../../../../public/icons/icons";
+import { ImPower } from "react-icons/im";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -36,10 +37,10 @@ const Sidebar = () => {
             >
               <Image
                 className="w-22 h-12"
-                src="/aj_logo_21_09_2023 2 (1).png"
+                src="/Frame 6 (1).svg"
                 alt="heroimage"
-                width={60}
-                height={60}
+                width={100}
+                height={100}
               />
             </a>
           )}
@@ -47,14 +48,30 @@ const Sidebar = () => {
             {!hideText ? <ArrowLeftFromLine /> : <ArrowRightToLine />}
           </button>
         </div>
-        <div className="h-[28%] flex flex-col px-2 py-1">
+        <div className=" flex flex-col px-2 py-1 space-y-2">
           <a
-            className={`w-full h-10 rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
+            className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
               hideText ? "justify-center" : "justify-start"
             }`}
           >
-            <Folderssvg />
-            {!hideText && <span className="font-500">Folders</span>}
+            <Homesvg />
+            {!hideText && <span className="font-500">Home</span>}
+          </a>
+          <a
+            className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
+              hideText ? "justify-center" : "justify-start"
+            }`}
+          >
+            <Settingsvg />
+            {!hideText && <span className="font-500">Settings</span>}
+          </a>
+          <a
+            className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
+              hideText ? "justify-center" : "justify-start"
+            }`}
+          >
+            <ImPower />
+            {!hideText && <span className="font-500">Credits</span>}
           </a>
         </div>
       </div>
