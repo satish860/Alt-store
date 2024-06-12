@@ -4,21 +4,17 @@ import { ColumnDef } from "@tanstack/react-table"
  
 export type Folder = {
   id: string
-  Name: string
-  Size: number
+  name: string
+  size: number
 }
  
 export const Column: ColumnDef<Folder>[] = [
   {
-    accessorKey: "Foldername",
+    accessorKey: "Name",
     header: "Foldername",
   },
   {
-    accessorKey: "Foldersize",
+    accessorKey: "Size",
     header: "Foldersize",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
   },
 ]
