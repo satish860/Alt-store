@@ -10,6 +10,8 @@ interface UserFolder {
   id: string;
   name: string;
   size: number;
+  shared: { name: string; email: string }[];
+  updated: string;
 }
 
 const xata = getXataClient();
@@ -28,8 +30,8 @@ async function getData(): Promise<UserFolder[]> {
     .map((record) => ({
       id: record.id,
       name: record.Foldername as string,
-      shared:0,
-      updated:0,
+      shared: [{ name: "Static User", email: "staticuser@example.com" }], 
+      updated: "Not yet implemented", 
       size: 0,
     }));
 
