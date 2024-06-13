@@ -53,7 +53,7 @@ const Sidebar = () => {
             className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
               hideText ? "justify-center" : "justify-start"
             }`}
-            href="/"
+            href="/folders"
           >
             <Homesvg />
             {!hideText && <span className="font-500">Home</span>}
