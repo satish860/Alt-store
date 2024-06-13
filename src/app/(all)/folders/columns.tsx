@@ -5,13 +5,12 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Sharedialog from "../components/sharedialog";
 
 export type Folder = {
   id: string;
@@ -69,7 +68,7 @@ export const Column: ColumnDef<Folder>[] = [
               <Link href={`/files/${payment.id}`}>View</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>Rename</DropdownMenuItem>
-            <DropdownMenuItem>Share</DropdownMenuItem>
+            <DropdownMenuItem><Sharedialog open={false}/></DropdownMenuItem>
             <DropdownMenuItem>Copy link</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
           </DropdownMenuContent>
