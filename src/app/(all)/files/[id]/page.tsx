@@ -11,7 +11,7 @@ const Fileview = () => {
         <div className="flex items-center gap-2">
           <div className="w-[300px] h-10 border rounded-lg flex items-center p-1">
             <Search />
-            <Input />
+            <Input placeholder="Search by file name"/>
           </div>
           <Fileupload />
         </div>
