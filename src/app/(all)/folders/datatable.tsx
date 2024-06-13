@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -29,20 +30,9 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-  console.log("dataaaa", data);
+  const router = useRouter();
+  router.refresh();
 
-  const getColumnClass = (accessorKey: string | undefined) => {
-    switch (accessorKey) {
-      case "Foldername":
-        return "w-[222px]";
-      case "Total size":
-        return "w-[100px]";
-      case "actions":
-        return "w-[100px]";
-      default:
-        return "";
-    }
-  };
 
   return (
     <div className="rounded-md">

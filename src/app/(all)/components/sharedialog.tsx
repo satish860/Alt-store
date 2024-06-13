@@ -14,12 +14,10 @@ import { Separator } from "@/components/ui/separator";
 import { IoCopyOutline } from "react-icons/io5";
 import { DropdownMenuItem } from "../../../components/ui/dropdown-menu";
 
-interface SharedialogProps {
-  open: boolean;
-}
 
-const Sharedialog = ({ open }: SharedialogProps) => {
-  const [Open, setOpen] = useState(open);
+
+const Sharedialog = () => {
+  const [Open, setOpen] = useState(false);
   return (
     <Dialog onOpenChange={setOpen} open={Open}>
       <DialogTrigger asChild>
@@ -27,7 +25,7 @@ const Sharedialog = ({ open }: SharedialogProps) => {
           Share
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent id="dialogContent" style={{ display: "none" }}>
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className="font-bold">Share file</DialogTitle>
           <div>

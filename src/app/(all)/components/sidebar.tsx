@@ -5,8 +5,14 @@ import { SearchX, Zap, ArrowRightToLine } from "lucide-react";
 import { useState } from "react";
 import { Homesvg, Settingsvg } from "../../../../public/icons/icons";
 import { ImPower } from "react-icons/im";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Sidebar = () => {
+interface SidebarProps {
+  name: string;
+  email: string;
+}
+
+const Sidebar = ({ name, email }: SidebarProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [hideText, setHideText] = useState(true);
 
@@ -17,7 +23,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col justify-center items-center transition-all duration-300 ${
+      className={`min-h-screen flex flex-col justify-between items-center transition-all duration-300 ${
         isExpanded
           ? "md:w-[15%] w-[30%] bg-white"
           : "w-[15%] md:w-[5%] bg-[#F6F8FA]"
@@ -74,6 +80,26 @@ const Sidebar = () => {
             <ImPower />
             {!hideText && <span className="font-500">Credits</span>}
           </a>
+        </div>
+      </div>
+      <div className="w-full flex items-center border justify-center">
+        <div
+          className={`w-[30%] flex items-center ${
+            hideText ? "justify-center w-full" : "justify-start"
+          }`}
+        >
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </div>
+        <div className="w-[70%] flex flex-col truncate">
+          <div>
+            {!hideText && <span className="font-500 text-xs">{name}</span>}
+          </div>
+          <div>
+            {!hideText && <span className="font-500 text-xs">{email}</span>}
+          </div>
         </div>
       </div>
     </div>

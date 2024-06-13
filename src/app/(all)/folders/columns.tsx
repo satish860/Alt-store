@@ -68,7 +68,7 @@ export const Column: ColumnDef<Folder>[] = [
               <Link href={`/files/${payment.id}`}>View</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>Rename</DropdownMenuItem>
-            <DropdownMenuItem><Sharedialog open={false}/></DropdownMenuItem>
+            <Sharedialog/>
             <DropdownMenuItem>Copy link</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
           </DropdownMenuContent>

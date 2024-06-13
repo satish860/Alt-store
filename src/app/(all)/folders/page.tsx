@@ -6,24 +6,16 @@ import { auth } from "@clerk/nextjs/server";
 import { Folder, Column } from "./columns";
 import { DataTable } from "../folders/datatable";
 
-interface UserFolder {
-  id: string;
-  name: string;
-  size: number;
-  shared: { name: string; email: string }[];
-  updated: string;
-}
-
 const xata = getXataClient();
 
-async function getData(): Promise<UserFolder[]> {
+async function getData(): Promise<Folder[]> {
   const { userId }: { userId: string | null } = auth();
 
   const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
     .filter("Userid", userId)
     .getAll();
 
-  const filteredRecords: UserFolder[] = records
+  const filteredRecords: Folder[] = records
     .filter(
       (record) => record.Foldername !== null && record.Foldername !== undefined
     )
