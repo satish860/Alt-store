@@ -25,7 +25,7 @@ const Sidebar = ({ name, email }: SidebarProps) => {
     <div
       className={`min-h-screen flex flex-col justify-between items-center transition-all duration-300 ${
         isExpanded
-          ? "md:w-[15%] w-[30%] bg-white"
+          ? "md:w-[260px] w-[30%] bg-white"
           : "w-[15%] md:w-[5%] bg-[#F6F8FA]"
       }`}
     >
@@ -82,25 +82,21 @@ const Sidebar = ({ name, email }: SidebarProps) => {
           </a>
         </div>
       </div>
-      <div className="w-full flex items-center border justify-center">
-        <div
-          className={`w-[30%] flex items-center ${
-            hideText ? "justify-center w-full" : "justify-start"
-          }`}
-        >
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </div>
-        <div className="w-[70%] flex flex-col truncate">
-          <div>
-            {!hideText && <span className="font-500 text-xs">{name}</span>}
+      <div
+        className={`w-full flex items-center ${
+          hideText ? "justify-center" : "justify-start"
+        } border-t border-r border-gray-300 py-2 px-2`}
+      >
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        {!hideText && (
+          <div className="ml-2 flex flex-col truncate">
+            <span className="font-500 text-xs">{name}</span>
+            <span className="font-500 text-xs">{email}</span>
           </div>
-          <div>
-            {!hideText && <span className="font-500 text-xs">{email}</span>}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
