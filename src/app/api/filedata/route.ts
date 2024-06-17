@@ -11,9 +11,9 @@ export async function POST(request: NextRequest) {
     const record = await xata.db.Filedata.create({
       Filename: req.Filename,
       File_url: req.FileUrl,
+      Folder: req.id,
     });
-    console.log(record)
-    return NextResponse.json("created");
+    return NextResponse.json({ id: record.id });
   } catch (error) {
     console.error("Error:", error);
   }

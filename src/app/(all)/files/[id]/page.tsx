@@ -3,23 +3,13 @@ import { Search } from "lucide-react";
 import Fileupload from "../../components/fileupload";
 import Filesview from "../../components/filesview";
 import { getXataClient } from "../../../../../src/xata";
-import { auth } from "@clerk/nextjs/server";
 
 const xata = getXataClient();
 
 const Fileview = async ({ params }: { params: { id: string } }) => {
-  console.log("paramssss", params);
-  // const { userId }: { userId: string | null } = auth();
-
-  const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
-    .filter(params)
-    .getAll();
-  console.log("recordssss", records);
-
-  const firstRecord =
-    records.length > 0 ? records[0] : { Foldername: "", Userid: "" };
-  const folderName = firstRecord.Foldername || "Default Folder";
-  const userIdString = firstRecord.Userid || "Default User";
+  const record = await xata.db.Altstore.read(params.id);
+  const folderName = record?.Foldername;
+  const userId = record?.Userid;
 
   return (
     <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
@@ -30,7 +20,11 @@ const Fileview = async ({ params }: { params: { id: string } }) => {
             <Search />
             <Input placeholder="Search by file name" />
           </div>
-          <Fileupload folderName={folderName} userId={userIdString} />
+          <Fileupload
+            folderName={folderName!}
+            userId={userId!}
+            id={params.id}
+          />
         </div>
       </div>
       <Filesview />

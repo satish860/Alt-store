@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { SignInButton } from "@clerk/nextjs";
-import { ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
           <UserButton />
         </SignedIn>
         <SignedOut>
-          <SignInButton />
+          <SignIn />
         </SignedOut>
       </div>
     </div>

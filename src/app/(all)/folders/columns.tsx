@@ -24,6 +24,14 @@ export const Column: ColumnDef<Folder>[] = [
   {
     accessorKey: "name",
     header: "Name",
+    cell: ({ row }) => {
+      const folder = row.original;
+      return (
+        <Link href={`/files/${folder.id}`}>
+          <span>{folder.name}</span>
+        </Link>
+      );
+    },
   },
   {
     accessorKey: "size",
@@ -54,7 +62,7 @@ export const Column: ColumnDef<Folder>[] = [
     id: "actions",
     header: "Action",
     cell: ({ row }) => {
-      const payment = row.original;
+      const folder = row.original;
 
       return (
         <DropdownMenu>
@@ -64,11 +72,11 @@ export const Column: ColumnDef<Folder>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>
-              <Link href={`/files/${payment.id}`}>View</Link>
-            </DropdownMenuItem>
+            <Link href={`/files/${folder.id}`}>
+              <DropdownMenuItem>View</DropdownMenuItem>
+            </Link>
             <DropdownMenuItem>Rename</DropdownMenuItem>
-            <Sharedialog/>
+            <Sharedialog />
             <DropdownMenuItem>Copy link</DropdownMenuItem>
             <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
           </DropdownMenuContent>

@@ -9,6 +9,5 @@ export async function POST(request: NextRequest) {
     Userid: req.User_id,
     Foldername: req.Foldername,
   });
-
-  return NextResponse.json("");
+  return NextResponse.json({ id: record.id });
 }

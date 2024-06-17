@@ -16,7 +16,6 @@ import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-
 export default function Foldercreation() {
   const { userId } = useAuth();
   const [folderName, setFolderName] = useState("");
@@ -25,10 +24,8 @@ export default function Foldercreation() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-
   const handleCreateClick = async () => {
     setLoading(true);
-    setError(null);
     try {
       console.log("User ID:", userId);
       console.log("Folder Name:", folderName);
@@ -36,7 +33,8 @@ export default function Foldercreation() {
         User_id: userId,
         Foldername: folderName,
       });
-      router.refresh();
+      console.log(response.data.id);
+      router.push(`/files/${response.data.id}`);
       setOpen(false);
     } catch (err) {
       console.error("Error creating folder:", err);
@@ -59,20 +57,17 @@ export default function Foldercreation() {
       <DialogContent>
         <DialogHeader className="">
           <DialogTitle className="font-bold ">Create folder</DialogTitle>
-
-          <div className="">
-            <Separator />
-            <div className="h-32 flex flex-col justify-center ">
-              <span className="font-500">Folder Name</span>
-              <div className="border h-10 w-full flex justify-center items-center rounded-md">
-                <Input
-                  value={folderName}
-                  onChange={(e) => setFolderName(e.target.value)}
-                />
-              </div>
+          <Separator />
+          <div className="h-32 flex flex-col justify-center ">
+            <span className="font-500">Folder Name</span>
+            <div className="border h-10 w-full flex justify-center items-center rounded-md">
+              <Input
+                value={folderName}
+                onChange={(e) => setFolderName(e.target.value)}
+              />
             </div>
-            <Separator />
           </div>
+          <Separator />
         </DialogHeader>
 
         <DialogFooter className="flex justify-center items-center">

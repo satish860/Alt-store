@@ -7,14 +7,13 @@ import axios from "axios";
 interface FileuploadProps {
   folderName: string;
   userId: string;
+  id: string;
 }
 
-const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId }) => {
-  console.log("Folder Name:", folderName);
-  console.log("User ID:", userId);
+const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
   const [file, setFile] = useState<File | null>(null);
   const url = process.env.NEXT_PUBLIC_ALT_STORAGE_URL || "";
-
+  const accesssUrl = process.env.NEXT_PUBLIC_ALT_ACCESS_URL || "";
   const uploader = new Upload();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,17 +27,19 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId }) => {
 
   const uploadFile = async (file: File) => {
     console.log(url);
+    const folderPath = `${userId}/${folderName}`;
     try {
       await uploader.singleFile(file, url, {
-        folderPath: "app",
+        folderPath: folderPath,
       });
       console.log("File uploaded successfully");
-      const pdfUrl = `${process.env.NEXT_PUBLIC_ALT_ACCESS_URL}${file.name}`;
+      const pdfUrl = `${accesssUrl}/${folderPath}/${file.name}`;
       const filedata = await axios.post("/api/filedata", {
         Filename: file.name,
         FileUrl: pdfUrl,
+        id: id,
       });
-      console.log("filedatass", filedata);
+      console.log("filedata", filedata);
     } catch (error) {
       alert("Error uploading file");
       console.error(error);

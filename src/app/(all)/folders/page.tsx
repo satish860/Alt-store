@@ -32,6 +32,8 @@ async function getData(): Promise<Folder[]> {
 
 const Folders = async () => {
   const data = await getData();
+
+  
   return (
     <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
       <div className="flex justify-between items-center">
