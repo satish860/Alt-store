@@ -12,8 +12,10 @@ const tables = [
     columns: [
       { name: "Userid", type: "string" },
       { name: "Foldername", type: "string" },
+      { name: "User_mail", type: "string" },
     ],
   },
+  { name: "Filedata", columns: [] },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -22,8 +24,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Altstore = InferredTypes["Altstore"];
 export type AltstoreRecord = Altstore & XataRecord;
 
+export type Filedata = InferredTypes["Filedata"];
+export type FiledataRecord = Filedata & XataRecord;
+
 export type DatabaseSchema = {
   Altstore: AltstoreRecord;
+  Filedata: FiledataRecord;
 };
 
 const DatabaseClient = buildClient();
