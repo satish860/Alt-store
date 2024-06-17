@@ -11,7 +11,7 @@ const xata = getXataClient();
 async function getData(): Promise<Folder[]> {
   const { userId }: { userId: string | null } = auth();
 
-  const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
+  const records = await xata.db.FolderData.select(["Userid", "Foldername", "id"])
     .filter("Userid", userId)
     .getAll();
 
