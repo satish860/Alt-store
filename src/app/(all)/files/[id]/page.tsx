@@ -9,10 +9,10 @@ const xata = getXataClient();
 
 const Fileview = async ({ params }: { params: { id: string } }) => {
   console.log("paramssss", params);
-  const { userId }: { userId: string | null } = auth();
+  // const { userId }: { userId: string | null } = auth();
 
   const records = await xata.db.Altstore.select(["Userid", "Foldername", "id"])
-    .filter("Userid", userId)
+    .filter(params)
     .getAll();
   console.log("recordssss", records);
 
