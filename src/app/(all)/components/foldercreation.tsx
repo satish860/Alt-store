@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 export default function Foldercreation() {
   const { userId } = useAuth();
@@ -21,6 +23,8 @@ export default function Foldercreation() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
 
   const handleCreateClick = async () => {
     setLoading(true);
@@ -32,6 +36,7 @@ export default function Foldercreation() {
         User_id: userId,
         Foldername: folderName,
       });
+      router.refresh();
       setOpen(false);
     } catch (err) {
       console.error("Error creating folder:", err);
