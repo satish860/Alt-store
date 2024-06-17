@@ -26,6 +26,7 @@
     "hello-app-test": "^1.0.4",
     "lucide-react": "^0.390.0",
     "next": "14.2.3",
+    "pdfjs-dist": "^4.3.136",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",

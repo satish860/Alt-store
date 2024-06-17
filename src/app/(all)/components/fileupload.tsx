@@ -13,37 +13,52 @@ interface FileuploadProps {
 
 const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
   const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
   const url = process.env.NEXT_PUBLIC_ALT_STORAGE_URL || "";
   const accesssUrl = process.env.NEXT_PUBLIC_ALT_ACCESS_URL || "";
   const uploader = new Upload();
   const router = useRouter();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0] || null;
-    console.log(selectedFile);
-    setFile(selectedFile);
-    if (selectedFile) {
-      uploadFile(selectedFile);
+    try {
+      const selectedFile = event.target.files?.[0] || null;
+      console.log(selectedFile);
+      setFile(selectedFile);
+      if (selectedFile) {
+        uploadFile(selectedFile);
+      }
+    } catch (error) {
+      alert("An error occurred while processing the file.");
+      console.error("Error in handleFileChange:", error);
     }
   };
 
   const uploadFile = async (file: File) => {
+    setLoading(true);
     const folderPath = `${userId}/${folderName}`;
     try {
       await uploader.singleFile(file, url, {
         folderPath: folderPath,
       });
       console.log("File uploaded successfully");
-      const pdfUrl = `${accesssUrl}/${folderPath}/${file.name}`;
-      const filedata = await axios.post("/api/filedata", {
-        Filename: file.name,
-        FileUrl: pdfUrl,
-        id: id,
-      });
-      router.refresh();
-    } catch (error) {
+
+      try {
+        const pdfUrl = `${accesssUrl}/${folderPath}/${file.name}`;
+        const filedata = await axios.post("/api/filedata", {
+          Filename: file.name,
+          FileUrl: pdfUrl,
+          id: id,
+        });
+        router.refresh();
+      } catch (error) {
+        alert("Error saving file data");
+        console.error("Error in saving file data:", error);
+      }
+    } catch (uploadError) {
       alert("Error uploading file");
-      console.error(error);
+      console.error("Error in uploadFile:", uploadError);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -63,7 +78,7 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
         }
         className="bg-[#17A34A] hover:bg-[#17A34A] text-white hover:text-white"
       >
-        <span>Upload file</span>
+        <span>{loading ? "Uploading..." : "Upload file"}</span>
       </Button>
     </div>
   );
