@@ -1,0 +1,19 @@
+{
+  "id": "mig_cpnt2st3l6trsu4qg17g",
+  "parentID": "mig_cpnt2kl3l6trsu4qg16g",
+  "checksum": "1:ec0a675f8cb49d6525a35a5faaaba2d5b73ab61ab5340ab778a37c69789f95e0",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Folder",
+          "type": "link",
+          "link": {
+            "table": "Altstore"
+          }
+        },
+        "table": "Filedata"
+      }
+    }
+  ]
+}

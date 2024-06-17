@@ -1,0 +1,12 @@
+{
+  "id": "mig_cpnvqimhon9ui32hk6pg",
+  "parentID": "mig_cpnvfs663uojtj1jesc0",
+  "checksum": "1:2e73ca0a740f83ddf022a1ca0244f8ad86a0ae41f02584efef82931cd1c92ea0",
+  "operations": [
+    {
+      "addTable": {
+        "table": "WorkspaceData"
+      }
+    }
+  ]
+}

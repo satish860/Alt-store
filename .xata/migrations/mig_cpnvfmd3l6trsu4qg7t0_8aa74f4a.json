@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpnvfmd3l6trsu4qg7t0",
+  "parentID": "mig_cpnt2st3l6trsu4qg17g",
+  "checksum": "1:8aa74f4a9bc9e3d94d786b7cd7eecabac87a80baa82581708a06d7993e134d96",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "User_mail",
+        "table": "Altstore"
+      }
+    }
+  ]
+}
