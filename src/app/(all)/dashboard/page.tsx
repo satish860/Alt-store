@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { getXataClient } from "../../../xata";
 import { auth } from "@clerk/nextjs/server";
-import { Workspace, Column } from "./columns";
+import { Workspace, WorkspaceGrid } from "./workspacegrid";
 import { DataTable } from "../folders/datatable";
 import Workspacecreation from "../components/workspacecreation";
 
@@ -45,7 +45,7 @@ const Workspaces = async () => {
           <Workspacecreation />
         </div>
       </div>
-      <DataTable columns={Column} data={data} />
+      <WorkspaceGrid workspaces={data} />
     </div>
   );
 };

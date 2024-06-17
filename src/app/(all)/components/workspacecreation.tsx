@@ -32,7 +32,7 @@ export default function Workspacecreation() {
         WorkspaceName: workspaceName,
       });
       console.log(response.data.id);
-      router.push(`/files/${response.data.id}`);
+      router.push(`/folders`);
       setOpen(false);
     } catch (err) {
       console.error("Error creating workspace:", err);
