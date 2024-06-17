@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Upload } from "hello-app-test";
+import axios from "axios";
 
 interface FileuploadProps {
   folderName: string;
@@ -9,8 +10,8 @@ interface FileuploadProps {
 }
 
 const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId }) => {
-  console.log('Folder Name:', folderName);
-  console.log('User ID:', userId);
+  console.log("Folder Name:", folderName);
+  console.log("User ID:", userId);
   const [file, setFile] = useState<File | null>(null);
   const url = process.env.NEXT_PUBLIC_ALT_STORAGE_URL || "";
 
@@ -32,6 +33,12 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId }) => {
         folderPath: "app",
       });
       console.log("File uploaded successfully");
+      const pdfUrl = `${process.env.NEXT_PUBLIC_ALT_ACCESS_URL}${file.name}`;
+      const filedata = await axios.post("/api/filedata", {
+        Filename: file.name,
+        FileUrl: pdfUrl,
+      });
+      console.log("filedatass", filedata);
     } catch (error) {
       alert("Error uploading file");
       console.error(error);

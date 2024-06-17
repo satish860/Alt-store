@@ -14,8 +14,16 @@ const tables = [
       { name: "Foldername", type: "string" },
       { name: "User_mail", type: "string" },
     ],
+    revLinks: [{ column: "Folder", table: "Filedata" }],
   },
-  { name: "Filedata", columns: [] },
+  {
+    name: "Filedata",
+    columns: [
+      { name: "Filename", type: "string" },
+      { name: "File_url", type: "string" },
+      { name: "Folder", type: "link", link: { table: "Altstore" } },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
