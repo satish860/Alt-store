@@ -3,10 +3,17 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Upload } from "hello-app-test";
 
-const Fileupload = () => {
+interface FileuploadProps {
+  folderName: string;
+  userId: string;
+}
+
+const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId }) => {
+  console.log('Folder Name:', folderName);
+  console.log('User ID:', userId);
   const [file, setFile] = useState<File | null>(null);
   const url = process.env.NEXT_PUBLIC_ALT_STORAGE_URL || "";
-  
+
   const uploader = new Upload();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,9 +26,9 @@ const Fileupload = () => {
   };
 
   const uploadFile = async (file: File) => {
-    console.log(url)
+    console.log(url);
     try {
-      await uploader.singleFile(file, url , {
+      await uploader.singleFile(file, url, {
         folderPath: "app",
       });
       console.log("File uploaded successfully");
