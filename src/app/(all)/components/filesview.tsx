@@ -10,7 +10,8 @@ const Filesview: React.FC<FilesviewProps> = ({ files }) => {
           key={file.id}
           className="w-[271px] h-[243px] border p-2 rounded-lg bg-gray-50 space-y-1 m-2"
         >
-          <div className="w-full h-[75%] bg-white rounded-lg"></div>
+          <div className="w-full h-[75%] bg-white rounded-lg">
+          </div>
           <div className="w-full flex justify-center items-center">
             <div className="w-[80%] space-y-1 p-1">
               <Link
