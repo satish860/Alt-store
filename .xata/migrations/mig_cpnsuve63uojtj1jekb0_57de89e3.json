@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpnsuve63uojtj1jekb0",
+  "parentID": "mig_cpnsune63uojtj1jeka0",
+  "checksum": "1:57de89e3ea9bf35a51dd00e94940104dc7f9e3495136233c428f47a84dc64896",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "Filename",
+          "type": "string"
+        },
+        "table": "Filedata"
+      }
+    }
+  ]
+}

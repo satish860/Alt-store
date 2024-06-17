@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpjuv06fask3be4qq9p0",
+  "parentID": "mig_cpjupgn50pga22vn1n80",
+  "checksum": "1:3811bdf95104b0508c7db7c65d7e46618b3d9350f97fd212ffc59b5343dadfb6",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "Altstore",
+        "oldName": "Alt-store"
+      }
+    }
+  ]
+}
