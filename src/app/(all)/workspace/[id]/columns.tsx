@@ -10,7 +10,7 @@ import {
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Sharedialog from "../components/sharedialog";
+import Sharedialog from "../../components/sharedialog";
 
 export type Folder = {
   id: string;

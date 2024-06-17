@@ -62,7 +62,7 @@ const Sidebar = ({ name, email }: SidebarProps) => {
             href="/dashboard"
           >
             <Homesvg />
-            {!hideText && <span className="font-500">Home</span>}
+            {!hideText && <span className="font-500">Workspace</span>}
           </a>
           <a
             className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${

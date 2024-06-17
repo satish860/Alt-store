@@ -22,9 +22,9 @@ export const WorkspaceGrid = ({ workspaces }: { workspaces: Workspace[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {workspaces.map((workspace) => (
-        <div key={workspace.id} className="bg-white rounded shadow p-4">
+        <div key={workspace.id} className="bg-white rounded shadow p-4 space-y-4">
           <div className="flex justify-between items-center mb-4">
-            <Link href={`/files/${workspace.id}`}>
+            <Link href={`/workspace/${workspace.id}`}>
               <h3 className="text-lg font-semibold">{workspace.name}</h3>
             </Link>
             <DropdownMenu>
@@ -34,7 +34,7 @@ export const WorkspaceGrid = ({ workspaces }: { workspaces: Workspace[] }) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <Link href={`/files/${workspace.id}`}>
+                <Link href={`/workspace/${workspace.id}`}>
                   <DropdownMenuItem>View</DropdownMenuItem>
                 </Link>
                 <DropdownMenuItem>Rename</DropdownMenuItem>
@@ -46,16 +46,21 @@ export const WorkspaceGrid = ({ workspaces }: { workspaces: Workspace[] }) => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div className="flex -space-x-2">
+          <div className="flex space-x-2">
             {workspace.shared.map((user, index) => (
               <Avatar key={index}>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
                 <AvatarFallback>{user.name[0]}</AvatarFallback>
               </Avatar>
             ))}
           </div>
           <div className="flex items-center space-x-2 mb-2">
-            <span className="text-sm text-gray-500">{workspace.size} kb - {workspace.updated}</span>
+            <span className="text-sm text-gray-500">
+              {workspace.size} kb - {workspace.updated}
+            </span>
           </div>
         </div>
       ))}

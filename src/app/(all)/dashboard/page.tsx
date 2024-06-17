@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { getXataClient } from "../../../xata";
 import { auth } from "@clerk/nextjs/server";
 import { Workspace, WorkspaceGrid } from "./workspacegrid";
-import { DataTable } from "../folders/datatable";
 import Workspacecreation from "../components/workspacecreation";
 
 const xata = getXataClient();
@@ -11,19 +10,24 @@ const xata = getXataClient();
 async function getData(): Promise<Workspace[]> {
   const { userId }: { userId: string | null } = auth();
 
-  const records = await xata.db.WorkspaceData.select(["UserId", "WorkspaceName", "id"])
+  const records = await xata.db.WorkspaceData.select([
+    "UserId",
+    "WorkspaceName",
+    "id",
+  ])
     .filter("UserId", userId)
     .getAll();
 
   const filteredRecords: Workspace[] = records
     .filter(
-      (record) => record.WorkspaceName !== null && record.WorkspaceName !== undefined
+      (record) =>
+        record.WorkspaceName !== null && record.WorkspaceName !== undefined
     )
     .map((record) => ({
       id: record.id,
       name: record.WorkspaceName as string,
-      shared: [{ name: "Static User", email: "staticuser@example.com" }], 
-      updated: "Not yet implemented", 
+      shared: [{ name: "Static User", email: "staticuser@example.com" }],
+      updated: "Not yet implemented",
       size: 0,
     }));
 
@@ -32,7 +36,7 @@ async function getData(): Promise<Workspace[]> {
 
 const Workspaces = async () => {
   const data = await getData();
-  
+
   return (
     <div className="container w-full py-6 lg:py-6 flex flex-col space-y-6">
       <div className="flex justify-between items-center">
