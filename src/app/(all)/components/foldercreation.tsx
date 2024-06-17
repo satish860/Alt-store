@@ -27,8 +27,6 @@ export default function Foldercreation() {
   const handleCreateClick = async () => {
     setLoading(true);
     try {
-      console.log("User ID:", userId);
-      console.log("Folder Name:", folderName);
       const response = await axios.post("/api/folderdata", {
         User_id: userId,
         Foldername: folderName,

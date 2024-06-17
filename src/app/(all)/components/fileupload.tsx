@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Upload } from "hello-app-test";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface FileuploadProps {
   folderName: string;
@@ -15,6 +16,7 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
   const url = process.env.NEXT_PUBLIC_ALT_STORAGE_URL || "";
   const accesssUrl = process.env.NEXT_PUBLIC_ALT_ACCESS_URL || "";
   const uploader = new Upload();
+  const router = useRouter();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0] || null;
@@ -26,7 +28,6 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
   };
 
   const uploadFile = async (file: File) => {
-    console.log(url);
     const folderPath = `${userId}/${folderName}`;
     try {
       await uploader.singleFile(file, url, {
@@ -39,7 +40,7 @@ const Fileupload: React.FC<FileuploadProps> = ({ folderName, userId, id }) => {
         FileUrl: pdfUrl,
         id: id,
       });
-      console.log("filedata", filedata);
+      router.refresh();
     } catch (error) {
       alert("Error uploading file");
       console.error(error);
