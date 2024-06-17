@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ArrowLeftFromLine } from "lucide-react";
-import { SearchX, Zap, ArrowRightToLine } from "lucide-react";
+import { ArrowLeftFromLine, ArrowRightToLine } from "lucide-react";
 import { useState } from "react";
 import { Homesvg, Settingsvg } from "../../../../public/icons/icons";
 import { ImPower } from "react-icons/im";

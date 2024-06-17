@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
   const record = await xata.db.FolderData.create({
     Userid: req.User_id,
     Foldername: req.Foldername,
+    Workspace: req.id,
   });
   return NextResponse.json({ id: record.id });
 }

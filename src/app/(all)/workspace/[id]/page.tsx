@@ -1,10 +1,10 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import Foldercreation from "../../components/foldercreation";
 import { getXataClient } from "../../../../xata";
 import { Folder, Column } from "../[id]/columns";
 import { DataTable } from "./datatable";
 import BreadcrumbResponsive from "../../components/breadcrumb";
+import Foldercreation from "../../components/foldercreation";
 
 const xata = getXataClient();
 
@@ -52,13 +52,13 @@ export default async function Workspace({
       </div>
       <hr />
       <div className="flex justify-between items-center">
-        <span className="text-lg font-bold">Home</span>
+        <span className="text-lg font-bold">Folders</span>
         <div className="flex items-center gap-2">
           <div className="w-[300px] h-10 border rounded-lg flex items-center p-1">
             <Search />
             <Input placeholder="Search by folder / file name" />
           </div>
-          <Foldercreation />
+          <Foldercreation id={params.id}/>
         </div>
       </div>
       <DataTable columns={Column} data={data} />

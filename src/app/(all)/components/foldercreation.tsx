@@ -16,7 +16,11 @@ import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-export default function Foldercreation() {
+interface FolderCreationProps {
+  id: string;
+}
+
+const Foldercreation: React.FC<FolderCreationProps> = ({ id }) => {
   const { userId } = useAuth();
   const [folderName, setFolderName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,6 +34,7 @@ export default function Foldercreation() {
       const response = await axios.post("/api/folderdata", {
         User_id: userId,
         Foldername: folderName,
+        id: id,
       });
       console.log(response.data.id);
       router.push(`/files/${response.data.id}`);
@@ -85,3 +90,5 @@ export default function Foldercreation() {
     </Dialog>
   );
 }
+
+export default Foldercreation; 

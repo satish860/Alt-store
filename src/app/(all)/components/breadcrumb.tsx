@@ -7,8 +7,8 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { ChevronRight } from "lucide-react"
 
 interface BreadcrumbItem {
   label: string;
@@ -34,7 +34,7 @@ const BreadcrumbResponsive: React.FC<BreadcrumbHeaderProps> = ({ items }) => {
             <BreadcrumbLink asChild className="max-w-20 truncate md:max-w-none">
               <Link href={item.href!}>{item.label}</Link>
             </BreadcrumbLink>
-            <BreadcrumbSeparator />
+            <ChevronRight size={16} />
           </BreadcrumbItem>
         ))}
         <BreadcrumbItem>
