@@ -5,10 +5,9 @@ const xata = getXataClient();
 
 export async function POST(request: NextRequest) {
   const req = await request.json();
-  const record = await xata.db.FolderData.create({
-    Userid: req.User_id,
-    Foldername: req.Foldername,
-    Workspace: req.id,
+  const record = await xata.db.WorkspaceData.create({
+    UserId: req.UserId,
+    WorkspaceName: req.WorkspaceName,
   });
   return NextResponse.json({ id: record.id });
 }

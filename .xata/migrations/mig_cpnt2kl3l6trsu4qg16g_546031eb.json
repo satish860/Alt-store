@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpnt2kl3l6trsu4qg16g",
+  "parentID": "mig_cpnt1453l6trsu4qg15g",
+  "checksum": "1:546031ebf515da380206c28f8287c675b4c97880155ecde277562b95723e8601",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "Folder",
+        "table": "Altstore"
+      }
+    }
+  ]
+}

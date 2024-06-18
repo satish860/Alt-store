@@ -16,13 +16,9 @@ import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-interface FolderCreationProps {
-  id: string;
-}
-
-const Foldercreation: React.FC<FolderCreationProps> = ({ id }) => {
+export default function Workspacecreation() {
   const { userId } = useAuth();
-  const [folderName, setFolderName] = useState("");
+  const [workspaceName, setWorkspaceName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
@@ -31,16 +27,15 @@ const Foldercreation: React.FC<FolderCreationProps> = ({ id }) => {
   const handleCreateClick = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("/api/folderdata", {
-        User_id: userId,
-        Foldername: folderName,
-        id: id,
+      const response = await axios.post("/api/workspacedata", {
+        UserId: userId,
+        WorkspaceName: workspaceName,
       });
       console.log(response.data.id);
-      router.push(`/files/${response.data.id}`);
+      router.push(`/workspace/${response.data.id}`);
       setOpen(false);
     } catch (err) {
-      console.error("Error creating folder:", err);
+      console.error("Error creating workspace:", err);
       setError(error);
     } finally {
       setLoading(false);
@@ -54,19 +49,19 @@ const Foldercreation: React.FC<FolderCreationProps> = ({ id }) => {
           variant="outline"
           className="bg-[#17A34A] text-white hover:bg-[#17A34A] hover:text-white"
         >
-          Create Folder
+          Create Workspace
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="">
-          <DialogTitle className="font-bold ">Create folder</DialogTitle>
+          <DialogTitle className="font-bold ">Create Workspace</DialogTitle>
           <Separator />
           <div className="h-32 flex flex-col justify-center ">
-            <span className="font-500">Folder Name</span>
+            <span className="font-500">Workspace Name</span>
             <div className="border h-10 w-full flex justify-center items-center rounded-md">
               <Input
-                value={folderName}
-                onChange={(e) => setFolderName(e.target.value)}
+                value={workspaceName}
+                onChange={(e) => setWorkspaceName(e.target.value)}
               />
             </div>
           </div>
@@ -90,5 +85,3 @@ const Foldercreation: React.FC<FolderCreationProps> = ({ id }) => {
     </Dialog>
   );
 }
-
-export default Foldercreation; 

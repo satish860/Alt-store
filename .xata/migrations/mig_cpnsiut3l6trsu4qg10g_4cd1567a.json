@@ -1,0 +1,16 @@
+{
+  "id": "mig_cpnsiut3l6trsu4qg10g",
+  "parentID": "mig_cpjuvjn50pga22vn1nd0",
+  "checksum": "1:4cd1567a71b440c7dfbf8f231c99a0b4bcbd81527751b7e83d7cf5d7ec0f2241",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "User_mail",
+          "type": "string"
+        },
+        "table": "Altstore"
+      }
+    }
+  ]
+}

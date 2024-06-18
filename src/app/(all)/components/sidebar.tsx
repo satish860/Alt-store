@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
-import { ArrowLeftFromLine } from "lucide-react";
-import { SearchX, Zap, ArrowRightToLine } from "lucide-react";
+import { ArrowLeftFromLine, ArrowRightToLine } from "lucide-react";
 import { useState } from "react";
 import { Homesvg, Settingsvg } from "../../../../public/icons/icons";
 import { ImPower } from "react-icons/im";
@@ -59,10 +58,10 @@ const Sidebar = ({ name, email }: SidebarProps) => {
             className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${
               hideText ? "justify-center" : "justify-start"
             }`}
-            href="/folders"
+            href="/dashboard"
           >
             <Homesvg />
-            {!hideText && <span className="font-500">Home</span>}
+            {!hideText && <span className="font-500">Workspace</span>}
           </a>
           <a
             className={`w-full h-[36px] rounded-xl flex items-center gap-2 hover:bg-gray-300 px-2 ${

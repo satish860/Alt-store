@@ -1,0 +1,13 @@
+{
+  "id": "mig_cpnvfs663uojtj1jesc0",
+  "parentID": "mig_cpnvfmd3l6trsu4qg7t0",
+  "checksum": "1:eb67936433615d5cd9bf9ed859d2304013e2a27b86943146857ac76a72a1d6a9",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "FolderData",
+        "oldName": "Altstore"
+      }
+    }
+  ]
+}

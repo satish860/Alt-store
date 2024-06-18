@@ -21,7 +21,7 @@ async function getData(folderId: string): Promise<FileData[]> {
 
 const Fileview = async ({ params }: { params: { id: string } }) => {
   const filedata = await getData(params.id);
-  const record = await xata.db.Altstore.read(params.id);
+  const record = await xata.db.FolderData.read(params.id);
   const folderName = record?.Foldername;
   const userId = record?.Userid;
 
