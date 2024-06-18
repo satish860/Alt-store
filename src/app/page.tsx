@@ -4,8 +4,8 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full">
-      <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex flex-col items-center justify-start">
+    <div className=" flex justify-between items-center w-full">
+      <div className="h-[50rem] w-full dark:bg-black bg-white  dark:bg-grid-white/[1] bg-grid-black/[0.3] relative flex flex-col items-center justify-start">
         <div className="w-full flex justify-end items-end">
           <SignedIn>
             <UserButton />
