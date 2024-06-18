@@ -40,11 +40,11 @@ export default function Home() {
             <p className="w-[60%] text-center text-md">
               You don&#39;t need to be a cloud guru to keep your data safe and
               scale to infinity. Our S3 makes industrial-strength security and
-              scalability as easy as microwaving popcorn.
+              scalability as easy as microwaving popcorn.
             </p>
           </div>
           <div className="gap-4 flex items-center">
-            <Button className="rounded-full">Get started</Button>
+            <Button className="rounded-full">Early Access</Button>
             <Button variant="secondary" className="rounded-full">
               Contact us <IoIosArrowRoundForward />
             </Button>
