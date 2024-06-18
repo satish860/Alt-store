@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { SignIn } from "@clerk/nextjs";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Topnav } from "./(all)/components/topnav";
 
 export default function Home() {

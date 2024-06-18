@@ -4,6 +4,8 @@ import { FloatingNav } from "../../../components/ui/floating-navbar";
 import { CiHome } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { FaRegMessage } from "react-icons/fa6";
+
+
 export function Topnav() {
   const navItems = [
     {
@@ -25,8 +27,9 @@ export function Topnav() {
     },
   ];
   return (
-    <div className="relative  w-full">
+    <div className="relative  w-full flex items-center">
       <FloatingNav navItems={navItems} />
+     
     </div>
   );
 }
