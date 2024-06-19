@@ -5,6 +5,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { SignIn } from "@clerk/nextjs";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
+import Landinginput from "./(all)/components/landinginput";
 
 export default function Home() {
   return (
@@ -44,10 +45,7 @@ export default function Home() {
               scalability as easy as microwaving popcorn.
             </p>
           </div>
-          <div className="gap-4 flex items-center w-96 h-10 bg-gray-100 border">
-            <Input className="bg-transparent" placeholder="Enter email address"/>
-            <Button className="">Get Early Access</Button>
-          </div>
+          <Landinginput />
         </div>
         <div className="w-full h-[50rem]"></div>
       </div>
