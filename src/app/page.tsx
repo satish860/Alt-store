@@ -1,31 +1,37 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Topnav } from "./(all)/components/topnav";
 import { IoMdArrowDropright } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, SignInButton } from "@clerk/nextjs";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
 import Landinginput from "./(all)/components/landinginput";
+import { useState } from "react";
 
 export default function Home() {
   return (
     <div className="flex justify-between items-center w-full">
       <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[1] bg-grid-black/[0.10] flex flex-col items-center justify-start">
-        <div className="w-[80%] flex justify-between items-center h-16 rounded-lg shadow-xl fixed p-6 bg-white z-30">
+        <div className="w-full flex justify-between items-center h-16 rounded-lg fixed p-6 bg-white z-30">
           {/* <Topnav /> */}
-
-          <img src="/Frame 6 (1).svg" className="w-24 h-14"></img>
-          <div className="flex items-center gap-6">
-            <a>Home</a>
-            <a>Contact</a>
-            <a>Help</a>
+          <div className="flex items-center gap-10">
+            <img src="/Frame 6 (1).svg" className="w-24 h-14"></img>
+            <div className="flex items-center gap-6">
+              <a className="text-gray-600 text-sm">Home</a>
+              <a className="text-gray-600 text-sm">Contact</a>
+              <a className="text-gray-600 text-sm">Help</a>
+            </div>
           </div>
-          <div>
+          <div className="flex items-center gap-6">
+            <SignedOut>
+              <Button className="rounded-full">Log in</Button>
+            </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
             <SignedOut>
-              <SignIn />
+              <SignInButton />
             </SignedOut>
           </div>
         </div>
@@ -39,7 +45,7 @@ export default function Home() {
             <h1 className="text-4xl sm:text-8xl font-bold">
               S3 for the Rest of Us
             </h1>
-            <p className="w-[60%] text-center text-md">
+            <p className="w-[70%] text-center text-md z-10 text-xl">
               You don&#39;t need to be a cloud guru to keep your data safe and
               scale to infinity. Our S3 makes industrial-strength security and
               scalability as easy as microwaving popcorn.
