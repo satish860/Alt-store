@@ -54,7 +54,7 @@ export default function Home() {
             </p>
           </div>
           <Landinginput />
-          <p className="text-lg text-gray-500">Get Lifetime Access for 20$</p>
+          <p className="text-lg text-black">Get Lifetime Access for 20$</p>
         </div>
         <div className="w-full h-[50rem]"></div>
       </div>
