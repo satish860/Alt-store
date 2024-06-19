@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="flex justify-between items-center w-full">
       <div className="h-full w-full dark:bg-black bg-white dark:bg-grid-white/[1] bg-grid-black/[0.10] flex flex-col items-center justify-start">
-        <div className="w-full flex justify-between items-center h-16 fixed p-6 bg-white z-30 border border-gray-300">
+        <div className="w-full flex justify-between items-center h-16 fixed p-6 bg-white z-30 rounded-full mt-4">
           {/* <Topnav /> */}
           <div className="flex items-center gap-10">
             <img src="/Frame 6 (1).svg" className="w-24 h-14"></img>
