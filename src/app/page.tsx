@@ -4,6 +4,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { SignIn } from "@clerk/nextjs";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Input } from "@/components/ui/input";
 
 export default function Home() {
   return (
@@ -43,11 +44,9 @@ export default function Home() {
               scalability as easy as microwaving popcorn.
             </p>
           </div>
-          <div className="gap-4 flex items-center">
-            <Button className="rounded-full">Early Access</Button>
-            <Button variant="secondary" className="rounded-full">
-              Contact us <IoIosArrowRoundForward />
-            </Button>
+          <div className="gap-4 flex items-center w-96 h-10 bg-gray-100 border">
+            <Input className="bg-transparent"/>
+            <Button className="">Get Early Access</Button>
           </div>
         </div>
         <div className="w-full h-[50rem]"></div>
