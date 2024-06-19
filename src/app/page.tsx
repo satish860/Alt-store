@@ -45,7 +45,7 @@ export default function Home() {
             </p>
           </div>
           <div className="gap-4 flex items-center w-96 h-10 bg-gray-100 border">
-            <Input className="bg-transparent"/>
+            <Input className="bg-transparent" placeholder="Enter email address"/>
             <Button className="">Get Early Access</Button>
           </div>
         </div>
