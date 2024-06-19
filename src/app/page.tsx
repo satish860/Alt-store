@@ -1,13 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Topnav } from "./(all)/components/topnav";
 import { IoMdArrowDropright } from "react-icons/io";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import { SignIn, SignInButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Input } from "@/components/ui/input";
 import Landinginput from "./(all)/components/landinginput";
-import { useState } from "react";
 
 export default function Home() {
   return (
@@ -23,15 +19,21 @@ export default function Home() {
               <a className="text-gray-600 text-sm">Help</a>
             </div>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
             <SignedOut>
-              <Button className="rounded-full">Log in</Button>
+              <SignInButton>
+                <Button variant="secondary" className="rounded-full">
+                  Login
+                </Button>
+              </SignInButton>
             </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>
             <SignedOut>
-              <SignInButton />
+              <SignInButton>
+                <Button className="rounded-full">Sign up</Button>
+              </SignInButton>
             </SignedOut>
           </div>
         </div>
@@ -52,6 +54,7 @@ export default function Home() {
             </p>
           </div>
           <Landinginput />
+          <p className="text-lg text-gray-500">Get Lifetime Access for 20$</p>
         </div>
         <div className="w-full h-[50rem]"></div>
       </div>
