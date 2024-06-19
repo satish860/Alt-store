@@ -7,6 +7,7 @@ const Landinginput = () => {
   const [email, setEmail] = useState<string>("");
   const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const validateEmail = (email: string): boolean => {
     // Basic email regex for validation
@@ -20,9 +21,14 @@ const Landinginput = () => {
       setEmail("");
       setIsValidEmail(true);
       setErrorMessage("");
+      setSuccessMessage("Email received");
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 10000);
     } else {
       setIsValidEmail(false);
-      setErrorMessage("Enter a valid email address");
+      setErrorMessage("This is not a valid email");
+      setSuccessMessage("");
     }
   };
 
@@ -32,6 +38,7 @@ const Landinginput = () => {
     if (inputValue === "") {
       setIsValidEmail(true);
       setErrorMessage("");
+      setSuccessMessage("");
     }
   };
 
@@ -39,7 +46,7 @@ const Landinginput = () => {
     <div className="flex flex-col gap-2 w-96">
       <div
         className={`flex items-center h-10 bg-gray-100 border ${
-          isValidEmail ? "border-gray-300" : "border-2 border-red-500"
+          isValidEmail ? "border-gray-300" : "border-red-500"
         }`}
       >
         <Input
@@ -50,13 +57,18 @@ const Landinginput = () => {
         />
         <Button
           onClick={handleButtonClick}
-          className={`${isValidEmail ? "bg-black" : "bg-red-500 hover:bg-red-600"} text-white`}
+          className={`${
+            isValidEmail ? "bg-black" : "bg-red-500 hover:bg-red-600"
+          } text-white`}
         >
           Get Early Access
         </Button>
       </div>
       {!isValidEmail && (
         <div className="text-red-500 text-sm">{errorMessage}</div>
+      )}
+      {successMessage && (
+        <div className="text-green-500 text-sm">{successMessage}</div>
       )}
     </div>
   );
