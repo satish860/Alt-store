@@ -12,6 +12,7 @@ import { Split } from "lucide-react";
 import { CircleHelp } from "lucide-react";
 import { GitCompareArrows } from "lucide-react";
 import { Heart } from "lucide-react";
+import { BarChartHero } from "./(all)/components/barchat";
 
 export default function Home() {
   return (
@@ -64,6 +65,7 @@ export default function Home() {
           <Landinginput />
           <p className="text-lg text-black">Get Lifetime Access for 20$</p>
         </div>
+        <BarChartHero />
         <div className="w-full h-[30rem] flex justify-center items-center">
           <div className=" w-full flex flex-col justify-center items-center">
             <div className="w-full h-full flex items-center justify-center">
@@ -78,7 +80,9 @@ export default function Home() {
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-b border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-t hover:from-gray-100 hover:to-white">
                 <Spline className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">Ease of use</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  Ease of use
+                </h1>
                 <p className="text-sm text-gray-600">
                   It&#39;s as easy as using an Apple, and as expensive as buying
                   one.
@@ -86,7 +90,9 @@ export default function Home() {
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-b border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-t hover:from-gray-100 hover:to-white">
                 <DollarSign className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">Pricing like no other</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  Pricing like no other
+                </h1>
                 <p className="text-sm text-gray-600">
                   Our prices are best in the market. No cap, no lock, no credit
                   card required.
@@ -94,7 +100,9 @@ export default function Home() {
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-b border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-t hover:from-gray-100 hover:to-white">
                 <Cloud className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">100% Uptime guarantee</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  100% Uptime guarantee
+                </h1>
                 <p className="text-sm text-gray-600">
                   We just cannot be taken down by anyone.
                 </p>
@@ -103,14 +111,18 @@ export default function Home() {
             <div className="w-full flex items-center justify-center">
               <div className="group w-[24%] h-52 border-l border-r border-t border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-b hover:from-gray-100 hover:to-white">
                 <Split className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">Multi-tenant Architecture</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  Multi-tenant Architecture
+                </h1>
                 <p className="text-sm text-gray-600">
                   You can simply share passwords instead of buying new seats
                 </p>
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-t border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-b hover:from-gray-100 hover:to-white">
                 <CircleHelp className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">24/7 Customer Support</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  24/7 Customer Support
+                </h1>
                 <p className="text-sm text-gray-600">
                   We are available a 100% of the time. Atleast our AI Agents
                   are.
@@ -118,14 +130,18 @@ export default function Home() {
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-t border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-b hover:from-gray-100 hover:to-white">
                 <GitCompareArrows className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">Money back guarantee</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  Money back guarantee
+                </h1>
                 <p className="text-sm text-gray-600">
                   If you donot like EveryAI, we will convince you to like us.
                 </p>
               </div>
               <div className="group w-[24%] h-52 border-l border-r border-t border-gray-300 p-8 space-y-4 bg-white hover:bg-gradient-to-b hover:from-gray-100 hover:to-white">
                 <Heart className="w-7 h-7" />
-                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">And everything else</h1>
+                <h1 className="text-lg font-bold transition-all duration-300 group-hover:ml-1">
+                  And everything else
+                </h1>
                 <p className="text-sm text-gray-600">
                   I just ran out of copy ideas. Accept my sincere apologies
                 </p>
