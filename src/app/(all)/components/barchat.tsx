@@ -41,7 +41,7 @@ export const BarChartHero = () => (
     categories={["Number of threatened species"]}
     colors={["blue"]}
     valueFormatter={dataFormatter}
-    yAxisWidth={100}
+    yAxisWidth={300}
     onValueChange={(v) => console.log(v)}
   />
 );
