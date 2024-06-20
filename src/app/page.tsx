@@ -63,9 +63,8 @@ export default function Home() {
             </p>
           </div>
           <Landinginput />
-          <p className="text-lg text-black">Get Lifetime Access for 20$</p>
         </div>
-        <div className="w-full flex justify-center items-center mr-48 text-center mb-10">
+        <div className="w-full flex justify-center items-center mb-10">
           <BarChartHero />
         </div>
 

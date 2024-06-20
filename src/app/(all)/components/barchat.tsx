@@ -41,7 +41,8 @@ export const BarChartHero = () => (
     categories={["Number of threatened species"]}
     colors={["blue"]}
     valueFormatter={dataFormatter}
-    yAxisWidth={300}
+    yAxisWidth={48}
     onValueChange={(v) => console.log(v)}
+    className="w-[50%] flex justify-center items-center"
   />
 );
